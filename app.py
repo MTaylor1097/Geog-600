@@ -61,15 +61,25 @@ f_meanx = f_group['Year'].apply(np.mean)
 df_m = SGM.set_index('Year')
 df_f = SGF.set_index('Year')
 
-#df_m['Male Height Average'] = df_m['Height'].mean() 
-plt.plot(df_m.index, df_m['Height'], 'bo', markersize = 2, alpha = 0.3, label = 'Height (cm)')
+# #Male
+# plt.plot(df_m.index, df_m['Height'], 'bo', markersize = 2, alpha = 0.3, label = 'Height (cm)')
+# plt.xlabel('Olympic Year')
+# plt.ylabel('Height(cm)')
+# plt.legend(loc = 'upper center')
+# plt.twinx()
+# plt.plot(df_m.index+1, df_m['Weight'], 'ro', markersize = 2, alpha = 0.3, label = 'Weight (kg)')
+# plt.ylabel('Weight (kg)')
+# plt.legend()
+
+#Female
+plt.plot(df_f.index, df_f['Height'], 'bo', markersize = 2, alpha = 0.3, label = 'Height (cm)')
 plt.xlabel('Olympic Year')
 plt.ylabel('Height(cm)')
 plt.legend(loc = 'upper center')
 plt.twinx()
-plt.plot(df_m.index+1, df_m['Weight'], 'ro', markersize = 2, alpha = 0.3, label = 'Weight (kg)')
+plt.plot(df_f.index+1, df_f['Weight'], 'ro', markersize = 2, alpha = 0.3, label = 'Weight (kg)')
 plt.ylabel('Weight (kg)')
-plt.legend()           
+plt.legend()       
 
 
               
