@@ -45,7 +45,7 @@ f_meanx = f_group['Year'].apply(np.mean)
 # plt.savefig('Scatter.png')
    
 
-#Histograms
+# #Histograms
 
 # plt.hist(SGM['Age'], bins = 50, color = 'blue', label = 'Male', histtype = 'stepfilled', alpha = 0.3)
 # plt.hist(SGF['Age'], bins = 50, color = 'red', label = 'Female', histtype = 'stepfilled', alpha = 0.3);
@@ -70,16 +70,57 @@ df_f = SGF.set_index('Year')
 # plt.plot(df_m.index+1, df_m['Weight'], 'ro', markersize = 2, alpha = 0.3, label = 'Weight (kg)')
 # plt.ylabel('Weight (kg)')
 # plt.legend()
+# plt.title('Heigt and Weight comparison')
+# plt.savefig('Dual_Axis_Male.png')
 
-#Female
-plt.plot(df_f.index, df_f['Height'], 'bo', markersize = 2, alpha = 0.3, label = 'Height (cm)')
+# #Female
+# plt.plot(df_f.index, df_f['Height'], 'bo', markersize = 2, alpha = 0.3, label = 'Height (cm)')
+# plt.xlabel('Olympic Year')
+# plt.ylabel('Height(cm)')
+# plt.legend(loc = 'upper center')
+# plt.twinx()
+# plt.plot(df_f.index+1, df_f['Weight'], 'ro', markersize = 2, alpha = 0.3, label = 'Weight (kg)')
+# plt.ylabel('Weight (kg)')
+# plt.legend()
+# plt.title('Heigt and Weight comparison')
+# plt.savefig('Dual_Axis_Female.png')
+
+#Twin x axis plot of average heights and weights at each olympics
+m_meanx = m_group['Year'].apply(np.mean)
+f_meanx = f_group['Year'].apply(np.mean)
+
+m_mean_H = m_group['Height'].apply(np.mean)
+f_mean_H = f_group['Height'].apply(np.mean)
+
+m_mean_W = m_group['Weight'].apply(np.mean)
+f_mean_W = f_group['Weight'].apply(np.mean)
+
+#Male
+plt.plot(m_meanx, m_mean_H, '-', markersize = 4, alpha = 0.3, label = 'Height (cm)' )
 plt.xlabel('Olympic Year')
 plt.ylabel('Height(cm)')
 plt.legend(loc = 'upper center')
 plt.twinx()
-plt.plot(df_f.index+1, df_f['Weight'], 'ro', markersize = 2, alpha = 0.3, label = 'Weight (kg)')
-plt.ylabel('Weight (kg)')
-plt.legend()       
+plt.plot(m_meanx, m_mean_W, '-', markersize = 4, alpha = 0.3, label = 'Weight (cm)', color = 'red)
+plt.xlabel('Olympic Year')
+plt.ylabel('Weight(cm)')
+plt.legend(loc = 'upper left')
+plt.title('Male Mean Height and Weight comparison')
+plt.savefig('Dual_Axis_Male_Mean.png')
+
+#Female
+plt.plot(f_meanx, f_mean_H, '-', markersize = 4, alpha = 0.3, label = 'Height (cm)')
+plt.xlabel('Olympic Year')
+plt.ylabel('Height(cm)')
+plt.legend(loc = 'lower center')
+plt.twinx()
+plt.plot(f_meanx, f_mean_W, '-', markersize = 4, alpha = 0.3, label = 'Weight (cm)', color = 'red' )
+plt.xlabel('Olympic Year')
+plt.ylabel('Weight(cm)')
+plt.legend(loc = 'lower right')
+plt.title('Female Mean Height and Weight comparison')
+plt.savefig('Dual_Axis_Female_Mean.png')
+    
 
 
               
